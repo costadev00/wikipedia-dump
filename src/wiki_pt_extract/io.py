@@ -6,7 +6,7 @@ import json
 import os
 from typing import Iterable, List
 
-from datasets import Dataset, Features, Value, concatenate_datasets
+from datasets import Dataset, Features, Sequence, Value, concatenate_datasets
 
 
 FEATURES = Features(
@@ -14,6 +14,8 @@ FEATURES = Features(
         "text": Value("string"),
         "title": Value("string"),
         "page_id": Value("string"),
+        "ns": Value("int32"),
+        "section_texts": Sequence(Value("string")),
     }
 )
 

@@ -18,12 +18,18 @@ def iter_pages_from_bz2(bz2_path: str) -> Iterator[Dict[str, str]]:
             title = ""
             page_id = ""
             latest_text = ""
+            namespace = 0
 
             for child in list(elem):
                 if child.tag.endswith("title"):
                     title = child.text or ""
                 elif child.tag.endswith("id"):
                     page_id = child.text or ""
+                elif child.tag.endswith("ns"):
+                    try:
+                        namespace = int(child.text or "0")
+                    except ValueError:
+                        namespace = 0
                 elif child.tag.endswith("revision"):
                     for revision_child in child.iter():
                         if revision_child.tag.endswith("text"):
@@ -33,6 +39,7 @@ def iter_pages_from_bz2(bz2_path: str) -> Iterator[Dict[str, str]]:
                 "title": title,
                 "page_id": page_id,
                 "text": latest_text,
+                "ns": namespace,
             }
 
             elem.clear()

@@ -2,3 +2,5 @@ requests
 tqdm
 datasets
 pyarrow
+huggingface_hub
+mwparserfromhell
