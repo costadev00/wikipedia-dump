@@ -75,3 +75,17 @@ python scripts/publish_hf_dataset.py --repo wikipedia-pt-br-extract
 
 This uploads the merged Parquet and JSONL to:
 `https://huggingface.co/datasets/<your-username>/wikipedia-pt-br-extract`
+
+## Token counting (Qwen3 tokenizer)
+
+Count total tokens with the Qwen3-1.7B-Base tokenizer:
+
+```bash
+python scripts/count_tokens.py --input data/ptwiki_articles1.jsonl --format jsonl
+```
+
+Parquet example:
+
+```bash
+python scripts/count_tokens.py --input data/ptwiki_articles1.parquet --format parquet
+```

@@ -4,3 +4,5 @@ datasets
 pyarrow
 huggingface_hub
 mwparserfromhell
+transformers
+sentencepiece
